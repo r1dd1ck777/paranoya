@@ -27,4 +27,3 @@
 /config/env.local.yml
 
 /public/uploads/*
-/config/resources/KeylessGoPro_push.pem

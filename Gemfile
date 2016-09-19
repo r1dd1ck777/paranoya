@@ -45,6 +45,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # gem 'quiet_assets'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-puma',    require: false
+  gem 'capistrano-sidekiq', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -52,6 +58,7 @@ end
 
 gem 'sidekiq'
 gem 'sidekiq-cron'
+# gem 'active_job-cron'
 gem 'rails-i18n'
 gem 'rmagick'
 gem 'pg'

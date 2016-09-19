@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/<%= ENV.fetch('REDIS_FOLDER', 0) %>
+  url: redis://localhost:6379/<%= ENV.fetch('REDIS_DIR', 0) %>
