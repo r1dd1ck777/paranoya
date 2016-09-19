@@ -9,6 +9,8 @@ set :deploy_to, -> { "~/#{fetch(:rails_env)}/#{fetch(:application)}" }
 append :linked_files, 'config/env.local.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads'
 
+set :rvm_ruby_version, '2.3.1@paranoya'
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
