@@ -70,3 +70,6 @@ gem 'slim-rails'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'simple_form'
+
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
