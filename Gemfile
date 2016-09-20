@@ -58,7 +58,6 @@ end
 
 gem 'sidekiq'
 gem 'sidekiq-cron'
-# gem 'active_job-cron'
 gem 'rails-i18n'
 gem 'rmagick'
 gem 'pg'
