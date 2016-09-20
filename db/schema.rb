@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920050212) do
+ActiveRecord::Schema.define(version: 20160920172108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
+  end
+
+  create_table "status_check_logs", force: :cascade do |t|
+    t.text     "response"
+    t.boolean  "is_fail"
+    t.integer  "status_check_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["status_check_id"], name: "index_status_check_logs_on_status_check_id", using: :btree
+  end
+
+  create_table "status_checks", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "url"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_status_checks_on_project_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,8 +56,12 @@ ActiveRecord::Schema.define(version: 20160920050212) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role"
+    t.string   "phone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "projects", "users"
+  add_foreign_key "status_check_logs", "status_checks"
+  add_foreign_key "status_checks", "projects"
 end
