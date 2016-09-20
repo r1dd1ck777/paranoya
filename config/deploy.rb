@@ -4,7 +4,7 @@ lock '3.6.1'
 set :application, 'paranoya'
 set :repo_url, 'https://github.com/r1dd1ck777/paranoya.git'
 
-set :deploy_to, -> { "~/#{fetch(:rails_env)}/#{fetch(:application)}" }
+set :deploy_to, -> { "/home/deployer/#{fetch(:rails_env)}/#{fetch(:application)}" }
 
 append :linked_files, 'config/env.local.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads'
