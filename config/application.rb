@@ -24,7 +24,7 @@ module Paranoya
         settings = YAML.load(File.open(env_file)) if File.exists?(env_file)
         settings.each do |key, value|
           ENV[key.to_s] = value unless ENV[key.to_s].present?
-        end if settings
+        end if settings.respond_to?(:each)
       end
     end
 
