@@ -19,8 +19,8 @@ if puma_config == 'production'
   shared_dir = "#{app_dir}/shared"
 
   daemonize true
-  bind "unix://#{shared_dir}/sockets/puma.sock"
-  activate_control_app "unix://#{shared_dir}/sockets/puma_ctl.sock"
+  bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
+  activate_control_app "unix://#{shared_dir}/tmp/sockets/puma_ctl.sock"
 
   # Set master PID and state locations
   pidfile 'tmp/pids/puma.pid'

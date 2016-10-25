@@ -6,7 +6,7 @@ default: &default
   username: <%= ENV.fetch('DB_USERNAME', 'root')%>
   password: <%= ENV.fetch('DB_PASSWORD', 'root')%>
 #  port: 5432
-#  template: template0
+  template: <%= ENV.fetch('DB_PASSWORD', 'template1')%>
 
 
 development:
