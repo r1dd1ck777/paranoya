@@ -19,11 +19,12 @@ if puma_config == 'production'
   app_dir = File.expand_path("../..", __FILE__)
   shared_dir = "#{app_dir}/shared"
 
+  daemonize true
   bind "unix://#{shared_dir}/sockets/puma.sock"
-  stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+  activate_control_app "unix://#{shared_dir}/sockets/puma_ctl.sock"
 
   # Set master PID and state locations
-  pidfile "#{shared_dir}/pids/puma.pid"
-  state_path "#{shared_dir}/pids/puma.state"
-  activate_control_app
+  pidfile 'tmp/pids/puma.pid'
+  state_path 'tmp/pids/puma.state'
+  stdout_redirect 'log/puma.log', 'log/puma_err.log'
 end
