@@ -19,14 +19,13 @@ module Paranoya
     end
 
     config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'env.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
-      env_file = File.join(Rails.root, 'config', 'env.local.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
+      ['env.local.yml', 'env.yml'].each do |file_variation|
+        env_file = File.join(Rails.root, 'config', file_variation)
+        settings = YAML.load(File.open(env_file)) if File.exists?(env_file)
+        settings.each do |key, value|
+          ENV[key.to_s] = value unless ENV[key.to_s].present?
+        end if settings
+      end
     end
 
     config.i18n.available_locales = [:ru]
