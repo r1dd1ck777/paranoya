@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026091717) do
+ActiveRecord::Schema.define(version: 20161026140750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,22 +25,22 @@ ActiveRecord::Schema.define(version: 20161026091717) do
   end
 
   create_table "url_test_results", force: :cascade do |t|
-    t.text     "response_body"
-    t.text     "response_headers"
     t.integer  "response_code"
+    t.text     "response_headers"
     t.boolean  "is_fail"
     t.integer  "url_test_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "expected_response_code"
     t.index ["url_test_id"], name: "index_url_test_results_on_url_test_id", using: :btree
   end
 
   create_table "url_tests", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "url"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "expected_response_code"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["project_id"], name: "index_url_tests_on_project_id", using: :btree
   end
 

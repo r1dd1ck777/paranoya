@@ -7,7 +7,8 @@ class UrlTest::Test
       response = response url_test.url
       url_test.url_test_results.create! response_headers: response.try(:headers),
                                         response_code: response.try(:code),
-                                        is_fail: response.try(:code) != url_test.status
+                                        expected_response_code: url_test.expected_response_code,
+                                        is_fail: response.try(:code) != url_test.expected_response_code
     end
 
     protected

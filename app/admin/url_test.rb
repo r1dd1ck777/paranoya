@@ -1,3 +1,3 @@
 ActiveAdmin.register UrlTest do
-  permit_params :status, :project_id, :url
+  permit_params :expected_response_code, :project_id, :url
 end

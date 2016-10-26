@@ -3,7 +3,7 @@ class CreateStatusChecks < ActiveRecord::Migration[5.0]
     create_table :url_tests do |t|
       t.belongs_to :project, foreign_key: true
       t.string :url
-      t.integer :status
+      t.integer :expected_response_code
 
       t.timestamps
     end
