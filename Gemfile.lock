@@ -8,6 +8,13 @@ GIT
       railties (>= 3.2, < 5.1)
       responders
 
+GIT
+  remote: git://github.com/r1dd1ck777/smsfly.git
+  revision: ae69aaa11b9f86831899faf0490cc72dc195d599
+  branch: master
+  specs:
+    smsfly (0.4.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -339,6 +346,7 @@ DEPENDENCIES
   sidekiq-cron
   simple_form
   slim-rails
+  smsfly!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
@@ -347,4 +355,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.3
+   1.13.6

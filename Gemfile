@@ -73,3 +73,10 @@ gem 'simple_form'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'rest-client'
+
+if ENV['GEM_DEV'] != nil
+  gem 'smsfly', path: '/home/leonid/lib/smsfly'
+else
+  # gem 'smsfly', '~> 0.4.3'
+  gem 'smsfly', github: 'r1dd1ck777/smsfly', branch: :master
+end

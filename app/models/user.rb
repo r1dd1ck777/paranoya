@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:user, :admin]
+  has_and_belongs_to_many :projects, join_table: :user_projects
 
   def is_admin?
     admin?

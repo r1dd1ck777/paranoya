@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920172108) do
+ActiveRecord::Schema.define(version: 20161026091717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,22 +24,34 @@ ActiveRecord::Schema.define(version: 20160920172108) do
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
-  create_table "status_check_logs", force: :cascade do |t|
-    t.text     "response"
+  create_table "url_test_results", force: :cascade do |t|
+    t.text     "response_body"
+    t.text     "response_headers"
+    t.integer  "response_code"
     t.boolean  "is_fail"
-    t.integer  "status_check_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["status_check_id"], name: "index_status_check_logs_on_status_check_id", using: :btree
+    t.integer  "url_test_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["url_test_id"], name: "index_url_test_results_on_url_test_id", using: :btree
   end
 
-  create_table "status_checks", force: :cascade do |t|
+  create_table "url_tests", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "url"
     t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_status_checks_on_project_id", using: :btree
+    t.index ["project_id"], name: "index_url_tests_on_project_id", using: :btree
+  end
+
+  create_table "user_projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_user_projects_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,6 +74,8 @@ ActiveRecord::Schema.define(version: 20160920172108) do
   end
 
   add_foreign_key "projects", "users"
-  add_foreign_key "status_check_logs", "status_checks"
-  add_foreign_key "status_checks", "projects"
+  add_foreign_key "url_test_results", "url_tests"
+  add_foreign_key "url_tests", "projects"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
 end

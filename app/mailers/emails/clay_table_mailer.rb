@@ -1,11 +1,11 @@
 class Emails::ClayTableMailer < ApplicationMailer
 
-  # @param status_check_log StatusCheckLog
-  def status_check_fail status_check_log
-    status_check = status_check_log.status_check
+  # @param url_test_result UrlTestResult
+  def status_check_fail user, url_test_result
+    url_test = url_test_result.url_test
 
-    mail to: User.pluck(:email),
-         subject: "Error on #{status_check.url}",
-         body: "#{status_check_log.response}"
+    mail to: user.email,
+         subject: "Error on #{url_test.url}",
+         body: "#{url_test.url} responds with #{url_test_result.response_code} code at #{l(url_test_result.created_at)}"
   end
 end

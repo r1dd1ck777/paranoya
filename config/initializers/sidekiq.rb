@@ -1,4 +1,4 @@
-redis_config = { url: "redis://localhost:6379/#{ENV.fetch('REDIS_DIR', 0)}", namespace: :paranoya }
+redis_config = { url: "redis://localhost:6379/#{ENV.fetch('REDIS_DB', 0)}", namespace: :paranoya }
 
 Sidekiq.configure_server do |config|
   config.redis = redis_config
