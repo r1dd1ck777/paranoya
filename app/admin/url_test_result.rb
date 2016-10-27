@@ -4,9 +4,7 @@ ActiveAdmin.register UrlTestResult do
   index do
     column :id
     column :created_at
-    column :url do |url_test_result|
-      url_test_result.url_test.url
-    end
+    column :url
     column :expected_response_code
     column :response_code
     column :is_fail
