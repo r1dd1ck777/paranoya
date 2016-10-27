@@ -1,2 +1,2 @@
 deploy:
-  master: ''
+  master: 'cap production deploy'
