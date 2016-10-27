@@ -67,12 +67,14 @@ gem 'devise-i18n'
 gem 'cancancan'
 gem 'slim-rails'
 gem 'kaminari'
+gem 'bootstrap-sass'
 gem 'bootstrap-kaminari-views'
 gem 'simple_form'
 
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'rest-client'
+gem 'devise-bootstrap-views'
 
 if ENV['GEM_DEV'] != nil
   gem 'smsfly', path: '/home/leonid/lib/smsfly'

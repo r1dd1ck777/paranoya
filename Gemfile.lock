@@ -84,6 +84,8 @@ GEM
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    bootstrap-sass (3.1.0.2)
+      sass (~> 3.2)
     bourbon (4.2.7)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -134,6 +136,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.9)
     devise-i18n (1.1.0)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
@@ -319,6 +322,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
+  bootstrap-sass
   byebug
   cancancan
   capistrano
@@ -329,6 +333,7 @@ DEPENDENCIES
   capistrano-sidekiq
   carrierwave
   devise
+  devise-bootstrap-views
   devise-i18n
   inherited_resources!
   jbuilder (~> 2.5)

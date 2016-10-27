@@ -10,6 +10,9 @@ append :linked_files, 'config/env.local.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads'
 
 set :rvm_ruby_version, '2.3.1@paranoya'
+if ENV['P']
+  set :password, ENV['P']
+end
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

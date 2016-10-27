@@ -18,6 +18,10 @@ class UrlTest::Test
     rescue SocketError => e
       Rails.logger.debug "#{e.to_s}"
       return nil
+    rescue RuntimeError => e
+      Rails.logger.debug "#{e.to_s}"
+      status = e.to_s.scan(/^([\d]+).*/)[0][0]
+      return status
     end
   end
 end
