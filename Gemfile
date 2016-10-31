@@ -77,6 +77,12 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'rest-client'
 gem 'devise-bootstrap-views'
 
+# headless test
+gem 'poltergeist'
+gem 'capybara'
+gem 'selenium-webdriver'
+gem 'cucumber'
+
 if ENV['GEM_DEV'] != nil
   gem 'smsfly', path: '/home/leonid/lib/smsfly'
 else
