@@ -6,16 +6,14 @@ class BrowserTest::TestSelenium
       setup
       @driver.get 'http://elementalselenium.com/tips/46-headless-ghostdriver'
       p @driver.title
+      p @driver.execute_script "return 1 + 2;"
       @driver.save_screenshot("./screenshot.png")
       teardown
     end
 
     def setup
       @driver = Selenium::WebDriver.for :remote, url: 'http://localhost:8001',
-                                        desired_capabilities: {
-                                            browserName: "phantomjs",
-                                            platform: "LINUX"
-                                        }
+                                        desired_capabilities: Selenium::WebDriver::Remote::Capabilities.phantomjs
 
     end
 
