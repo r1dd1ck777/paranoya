@@ -13,7 +13,7 @@ development:
   <<: *default
   database: <%= ENV.fetch('DB_NAME', 'paranoya')%>_development
 
-test:
+test: &test
   <<: *default
   database: <%= ENV.fetch('DB_NAME', 'paranoya')%>_test
 
@@ -24,3 +24,6 @@ production:
 staging:
   <<: *default
   database: <%= ENV.fetch('DB_NAME', 'paranoya')%>_staging
+
+cucumber:
+  <<: *test

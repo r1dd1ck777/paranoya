@@ -1,6 +1,7 @@
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+require 'capybara/cucumber'
 
 class BrowserTest::Test
   extend Capybara::DSL

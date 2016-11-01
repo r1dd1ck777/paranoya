@@ -82,6 +82,7 @@ gem 'poltergeist'
 gem 'capybara'
 gem 'selenium-webdriver'
 gem 'cucumber'
+gem 'cucumber-rails', require: false
 
 if ENV['GEM_DEV'] != nil
   gem 'smsfly', path: '/home/leonid/lib/smsfly'
