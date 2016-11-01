@@ -1,8 +1,8 @@
 require 'cucumber'
 
-class BrowserTest::TestCucumber
+class BrowserTest::TestPureCucumber
   class << self
-    def call
+    def call feature_text = ''
       setup
       Cucumber::Runtime.new(configuration).run!
       teardown

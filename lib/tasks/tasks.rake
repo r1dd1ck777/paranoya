@@ -9,3 +9,7 @@ end
 task :browser_test_cucumber => :environment do
   BrowserTest::TestCucumber.()
 end
+
+task :browser_test_pure_cucumber => :environment do
+  BrowserTest::TestPureCucumber.()
+end
