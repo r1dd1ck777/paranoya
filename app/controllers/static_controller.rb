@@ -6,4 +6,7 @@ class StaticController < ApplicationController
   def code
     head params[:code]
   end
+
+  def js
+  end
 end

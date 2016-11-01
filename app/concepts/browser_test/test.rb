@@ -12,10 +12,12 @@ class BrowserTest::Test
 
     def call
       setup
-      visit 'http://elementalselenium.com/tips/46-headless-ghostdriver'
-      p Capybara.drivers
-      p execute_script "return 1 + 2;"
+      # visit 'http://elementalselenium.com/tips/46-headless-ghostdriver'
+      # visit 'http://localhost:3000/js?js=document.write(%27111%27)'
+      visit 'http://www.personalnovel.co.uk/customize?book=676'
+      fill_in 'vars-Heroine_CN', with: 'Ruslan'
       p title
+      save_screenshot("./tmp/browser_test.png")
       teardown
     end
 
@@ -27,11 +29,19 @@ class BrowserTest::Test
       #       desired_capabilities: Selenium::WebDriver::Remote::Capabilities.phantomjs
       #   )
       # end
+      Capybara.run_server = false
       Capybara.register_driver :poltergeist do |app|
-        Capybara::Poltergeist::Driver.new(app)
+        Capybara::Poltergeist::Driver.new(app, {
+                                                 debug:     true,  # turn on poltergeist debug mode
+                                                 js_errors: true,  # turn on javascript errors on page
+                                                 timeout:   10000,
+                                                 phantomjs_options: ['--load-images=yes', '--ignore-ssl-errors=yes', '--ssl-protocol=any']
+                                             })
+
       end
       Capybara.drivers[:rack_test] = nil
       Capybara.drivers[:selenium] = nil
+      Capybara.default_driver = :poltergeist
       Capybara.javascript_driver = :poltergeist
       Capybara.current_driver = Capybara.javascript_driver
     end
