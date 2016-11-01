@@ -9,11 +9,7 @@ class BrowserTest::TestCucumber
     end
 
     def configuration
-      result = Cucumber::Cli::Configuration.new(STDOUT, STDERR).tap do |configuration|
-        Cucumber.logger = configuration.log
-      end
-
-      result = Cucumber::Configuration.new(result)
+      result = Cucumber::Configuration.new({paths: ["#{Rails.root}/features"], formats: [['pretty', STDOUT]]})
       result
     end
 
