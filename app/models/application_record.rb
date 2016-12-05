@@ -1,7 +1,10 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  scope :recent, proc { order('id desc') }
+  scope :recent, Proc.new { |count|
+                 count ||= 10
+                 order('id desc').limit(count)
+               }
 
   def to_s
     to_label
