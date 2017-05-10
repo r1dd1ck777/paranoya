@@ -15,7 +15,7 @@ plugin :tmp_restart
 puma_config = ENV.fetch("PUMA_STAGE") { "development" }
 
 if puma_config == 'production'
-  app_dir = File.expand_path("../..", __FILE__)
+  app_dir = File.expand_path("../../..", __FILE__)
   shared_dir = "#{app_dir}/shared"
 
   daemonize true
