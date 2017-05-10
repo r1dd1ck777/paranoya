@@ -1,2 +1,2 @@
 deploy:
-  master: 'cap production deploy puma:restart'
+  master: 'cap production deploy puma:stop puma:start'

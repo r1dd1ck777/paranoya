@@ -52,6 +52,7 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-puma',    require: false
   gem 'capistrano-sidekiq', require: false
+  gem 'annotate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

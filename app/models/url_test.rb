@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: url_tests
+#
+#  id                     :integer          not null, primary key
+#  project_id             :integer
+#  url                    :string
+#  expected_response_code :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
 class UrlTest < ApplicationRecord
   belongs_to :project
   has_many :url_test_results, dependent: :destroy
