@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+@reboot cd /home/deployer/production/paranoya/current && RAILS_ENV=production ~/.rvm/bin/rvm 2.3.1@paranoya do bundle exec puma -C /home/deployer/production/paranoya/current/config/puma.rb --daemon
+@reboot cd /home/deployer/production/paranoya/current && RAILS_ENV=production ~/.rvm/bin/rvm 2.3.1@paranoya do bundle exec sidekiq --index 0 --pidfile /home/deployer/production/paranoya/shared/tmp/pids/sidekiq-0.pid --environment production --logfile /home/deployer/production/paranoya/shared/log/sidekiq.log --daemon
