@@ -4,7 +4,7 @@ class UrlTest::Test
     # @param url_test UrlTest
     def call url_test
       Rails.logger.debug "status_check for #{url_test.to_s}"
-      response = response url_test.url
+      response = retrieve_response(url_test.url)
       url_test.url_test_results.create! response_headers: response[:headers],
                                         response_code: response[:code],
                                         expected_response_code: url_test.expected_response_code,
@@ -14,7 +14,18 @@ class UrlTest::Test
 
     protected
 
-    def response url
+    # get response data
+    # will try one more time if code == ''
+    # @return Hash
+    def retrieve_response(url)
+      response = response(url)
+      response = response(url) unless response[:code].present?
+      response
+    end
+
+    # Do check status via http request
+    # @return Hash
+    def response(url)
       result = {}
       response = RestClient.get(url, headers={})
       result[:headers] = response.try(:headers)
