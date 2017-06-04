@@ -1,8 +1,10 @@
-class UrlTest::Test
+module UrlTest::Test
   class << self
 
     # @param url_test UrlTest
-    def call url_test
+    # Example:
+    #  UrlTest::Test.(url_test)
+    def call(url_test)
       Rails.logger.debug "status_check for #{url_test.to_s}"
       response = retrieve_response(url_test.url)
       url_test.url_test_results.create! response_headers: response[:headers],

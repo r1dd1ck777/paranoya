@@ -7,7 +7,7 @@ class UrlTestResult::SendNotification
       return nil if send_too_often? url_test_result
 
       url_test_result.users.each do |user|
-        Emails::ClayTableMailer.status_check_fail(user, url_test_result).deliver_now
+        Emails::ClayTableMailer.status_check_fail(user, url_test_result).deliver # _now
         Smsfly.send_sms("Error on #{url_test_result.url_test.url} (code #{url_test_result.response_code})", user.phone) if user.phone.present?
       end
     end

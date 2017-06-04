@@ -36,6 +36,9 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
