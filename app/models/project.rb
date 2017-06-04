@@ -17,6 +17,10 @@ class Project < ApplicationRecord
   validates_presence_of :name, :url, :users
   validate :url_is_valid
 
+  def user_emails_to_notify
+    users.all.map(&:email)
+  end
+
   protected
 
   def url_is_valid

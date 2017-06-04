@@ -1,5 +1,5 @@
 ActiveAdmin.register ::Log::Log do
-  permit_params :message, :project_id
+  permit_params :message, :project_id, :data, :level
 
   collection_action :destroy_all, method: :get do
     ::Log::Log.destroy_all
