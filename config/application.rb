@@ -28,6 +28,8 @@ module Paranoya
       end
     end
 
+    config.time_zone = 'Kyiv'
+
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
 
